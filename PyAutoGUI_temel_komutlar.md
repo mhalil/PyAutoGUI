@@ -1,3 +1,17 @@
+**PyAutoGUI**, fare ve klavyeleri kontrol etmemizi sağlayan, böylece otomatik görevler yapan kodlar/botlar yazmamıza yardımcı olan güzel, faydalı bir Python kütüphanesidir/modülüdür.
+
+**PyAutoGUI** kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;
+
+* İmleci hareket ettirme,
+* İstenilen yere tek, çift ya da daha fazla tıklama,
+* Pencere, diyalog kutusu, kaydırma çubuğu,...vb  hareket ettirme,
+* Klavyeden yazı yazma,
+* Komut gönderme,
+* Ekran görüntüsü alma,
+* Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.
+
+Bu repoda **PyAutoGUI** kütüphanesinin Temel Komutları anlatılmıştır. Kütüphane daha geniş komut ve kullanım seçeneklerine sahiptir.
+
 # EKRAN KOMUTLARI;
 
 Öncelikle **pyautogui** modülünü, çalışmamıza import edelim.
@@ -20,7 +34,7 @@ print(pyautogui.size())
 > Size(width=1920, height=1080)
 > ```
 
-## ## onScreen(x, y)
+## onScreen(x, y)
 
 Belirttiğimiz (0, 3000) Koordinatları, ekran sınırları içerisinde mi? Öğrenelim.
 
@@ -161,6 +175,38 @@ pyautogui.click(clicks=2, interval=0.25)
 
 ```python
 pyautogui.click(button="right", clicks=3, interval=0.25)
+```
+
+## rightClick(x, y)
+
+İstenilen (örneğin 650, 550) konuma gidip **farenin sağ butonuna** tıkla.
+
+```python
+pyautogui.rightClick(650, 550)
+```
+
+## middleClick(x, y)
+
+İstenilen (örneğin 500, 1000) konuma gidip **farenin orta butonuna** tıkla.
+
+```python
+middleClick(500, 1000)
+```
+
+## doubleClick(x, y)
+
+İstenilen (örneğin 100, 200) konuma gidip **farenin sol butonuna çift** tıkla.
+
+```python
+pyautogui.doubleClick(100, 200)
+```
+
+## tripleClick(x, y)
+
+İstenilen (örneğin 300, 600) konuma gidip **farenin sol butonuna üç kez** tıkla.
+
+```python
+pyautogui.tripleClick(300, 600)
 ```
 
 ## mouseDown() / mouseUp()
@@ -322,8 +368,6 @@ print(pyautogui.password(text='Burası metin', title='Başlık', mask='*'))
 ```python
 resim = pyautogui.screenshot('ekran_goruntum.png')
 ```
-
-
 
 ## region=(a,b,c,d)
 
