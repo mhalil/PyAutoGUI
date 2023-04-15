@@ -1,7 +1,15 @@
-PyAutoGUI fare ve klavye hareketleri ile uygulamaları kontrol etmemizi sağlayan bir kütüphanedir.
-PyAutoGUI kütüphanesi ile fareyi hareket ettirme, istenilen yere tıklama, çift tıklama, kaydırma; klavyeden yazı yazma, komutlar gönderme; ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve bu gibi alanların üzerinde belirli işlemler yapabiliriz.
+**PyAutoGUI**, fare ve klavyeleri kontrol etmemizi sağlayan, böylece otomatik görevler yapan kodlar/botlar yazmamıza yardımcı olan güzel, faydalı bir Python kütüphanesidir/modülüdür.
 
-Bu repoda PyAutoGUI kütüphanesinin Temel Komutları anlatılmıştır.
+**PyAutoGUI** kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;
+* İmleci hareket ettirme,
+* İstenilen yere tek, çift ya da daha fazla tıklama,
+* Pencere ya da diyalog kutusu Kaydırma,
+* Klavyeden yazı yazma,
+* Komut gönderme,
+* Ekran görüntüsü alma,
+* Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.
+
+Bu repoda **PyAutoGUI** kütüphanesinin Temel Komutları anlatılmıştır. Kütüphane daha geniş komut ve kullanım seçeneklerine sahiptir.
 
 # EKRAN KOMUTLARI;
 
@@ -168,6 +176,38 @@ pyautogui.click(clicks=2, interval=0.25)
 pyautogui.click(button="right", clicks=3, interval=0.25)
 ```
 
+## rightClick(x, y)
+
+İstenilen (örneğin 650, 550) konuma gidip **farenin sağ butonuna** tıkla.
+
+```python
+pyautogui.rightClick(650, 550)
+```
+
+## middleClick(x, y)
+
+İstenilen (örneğin 500, 1000) konuma gidip **farenin orta butonuna** tıkla.
+
+```python
+middleClick(500, 1000)
+```
+
+## doubleClick(x, y)
+
+İstenilen (örneğin 100, 200) konuma gidip **farenin sol butonuna çift** tıkla.
+
+```python
+pyautogui.doubleClick(100, 200)
+```
+
+## tripleClick(x, y)
+
+İstenilen (örneğin 300, 600) konuma gidip **farenin sol butonuna üç kez** tıkla.
+
+```python
+pyautogui.tripleClick(300, 600)
+```
+
 ## mouseDown() / mouseUp()
 
 **Farenin sol butonuna** bas (mouseDown()) ve elini butondan çek (mouseUp())  
@@ -191,20 +231,6 @@ pyautogui.mouseDown(button='right')
 ```python
 pyautogui.mouseUp(button='right', x=100, y=200)
 ```
-## Diğer bahsedeceğimiz fare hareketleri;
-
-## rightClick(x, y)
-pyautogui.rightClick(x, y)
-
-## middleClick(x, y)
-pyautogui.middleClick(x, y)
-
-## doubleClick(x, y)
-pyautogui.doubleClick(x, y)
-
-## tripleClick(x, y)
-pyautogui.tripleClick(x, y)
-
 
 # KLAVYE KONTROL İŞLEVLERİ;
 
@@ -349,4 +375,3 @@ Ekranının sadece **belirli bir kısmının** görüntüsünü almak isteyince 
 ```python
 resim = pyautogui.screenshot("goruntu.png", region=(20, 50, 100, 500))
 ```
-
