@@ -12,7 +12,7 @@
 
 Bu repoda **PyAutoGUI** kütüphanesinin Temel Komutları anlatılmıştır. Kütüphane daha geniş komut ve kullanım seçeneklerine sahiptir.
 
-# EKRAN KOMUTLARI;
+# Genel Fonksiyonlar;
 
 Öncelikle **pyautogui** modülünü, çalışmamıza import edelim.
 
@@ -48,7 +48,7 @@ print(pyautogui.onScreen(0, 3000))
 > False
 > ```
 
-# FARE HAREKETLERİ;
+# Fare Hareketine Dair Fonksiyonlar;
 
 ## position()
 
@@ -75,6 +75,21 @@ print(pyautogui.position())
 > 
 > ```python
 > Point(x=1577, y=229)
+> ```
+
+## displayMousePosition()
+
+Bu fonksiyon, İmleç koordinatlarını eş zamanlı şekilde konsolda görüntüler. Ayrıca imleçin bulunduğu konumun RGB renk kodunu da görüntüler. Komuttan çıkmak için, imleç konsoldayken  `Ctrl + C` tuşlarına basmalısınız.
+
+```python
+pyautogui.displayMousePosition()
+```
+
+> Çıktı
+> 
+> ```python
+> Press Ctrl-C to quit.
+> X: 1018 Y:  991 RGB: ( 62,  68,  80)
 > ```
 
 ## moveTo(x, y)
@@ -105,7 +120,7 @@ pyautogui.moveTo(100, 200, 2)
 
 ## moveRel(x, y)
 
-İmleci mevcut bulunduğu konumdan 50 pixel sağa (x ekseni yönünde) taşı
+İmleci **mevcut bulunduğu konumdan** 50 pixel sağa (x ekseni yönünde) taşı
 
 ```python
 pyautogui.moveRel(50, 0)
@@ -119,7 +134,7 @@ pyautogui.moveRel(-50, 0)
 
 ## dragTo(x, y, button="right/left")
 
-Farenin **sol tuşuna** basılı tutarak imleci X'te 750, Y'de 200 piksel konumuna sürükle.
+Farenin **sol tuşuna** basılı tutarak imleci X'te 750, Y'de 200 piksel konumuna sürükle-bırak. Sürükle-bırak işlemi yapar.
 
 ```python
 pyautogui.dragTo(750, 200, button="left")
@@ -129,6 +144,20 @@ pyautogui.dragTo(750, 200, button="left")
 
 ```python
 pyautogui.dragRel(30, 0, 2, button="right")
+```
+
+## dragRel(x,y)
+
+Farenin **sol tuşuna** basılı tutarak imleci **mevcut bulunduğu konumdan** X'te 150 sağa, Y'de 200 piksel yukarı sürükle-bırak.
+
+```python
+pyautogui.dragRel(150,-200)
+```
+
+**duration** parametresi ile, sürükle-bırak işleminin kaç saniye içerisinde yapılması gerektiğini belirtebilirsiniz. 
+
+```python
+pyautogui.dragRel(-150,200,duration=3)
 ```
 
 ## click()
@@ -217,23 +246,54 @@ pyautogui.tripleClick(300, 600)
 pyautogui.mouseDown(); pyautogui.mouseUp()
 ```
 
-## mouseDown(button='right / left')
+## mouseDown(x, y, button="left/right")
 
-Sağ / Sol butona bas.
+**Farenin sağ / sol / orta butonuna** bas,  çek komutu gelmeden butonu bırakma. Kopyalamak amacıyla **Metin seçimi yaparken** kullanabileceğimiz bir fonksiyon.
+
+```python
+pyautogui.mouseDown(864, 486, button="left")
+pyautogui.mouseUp(864, 864, button="left")
+```
+
+## mouseDown(button='right / left / middle')
+
+Farenin Sağ / Sol / Orta butona bas.
 
 ```python
 pyautogui.mouseDown(button='right')
 ```
 
-## mouseUp()
+## mouseUp(x, y, button='right / left / middle')
 
-(100,200) koordinatlarına gittikten sonra farenin sağ butonuna basmayı bırak.
+(100,200) koordinatlarına gittikten sonra farenin sağ butonuna basmayı bırak. Bu fonksiyon, Metin seçimi yaparken, seçimin nerede bitmesi gerektiğini belirtirken kullanılabilir.
 
 ```python
 pyautogui.mouseUp(button='right', x=100, y=200)
 ```
 
-# KLAVYE KONTROL İŞLEVLERİ;
+Parametreler yer değiştirebilir. Aynı kod aşağıdaki şekilde de yazılabilir;
+
+```python
+pyautogui.mouseUp(x=100, y=200, button='right')
+```
+
+## scrool(...)
+
+Sayfada kaydırma işlemi yapar. Fare tekerini 5 kez yukarı (ileri) hareket ettirelim.
+
+```python
+pyautogui.scroll(5)
+```
+
+Kodu çalıştırdığımızda öncelikle imlec (1750, 400) konumuna gidip bir kez sol tıklasın ardından fare tekerini 50 kez aşağı (geri/kendimize) doğru hareket ettirsin.
+
+```python
+pyautogui.moveTo(1750,400)
+pyautogui.click()
+pyautogui.scroll(-50)
+```
+
+# Klavye Kontrol Fonksiyonları;
 
 ## typewrite('...')
 
@@ -265,19 +325,19 @@ print(pyautogui.KEYBOARD_KEYS)
 
 ## press("...")
 
- **Enter** tuşuna bas.
+ **Enter** tuşuna bas ve çek.
 
 ```python
 pyautogui.press("enter")
 ```
 
-**F1** tuşuna bas.
+**F1** tuşuna bas ve çek.
 
 ```python
 pyautogui.press("f1")
 ```
 
-**Sol ok** tuşuna bas.
+**Sol ok** tuşuna bas ve çek.
 
 ```python
 pyautogui.press("left")
@@ -299,7 +359,7 @@ pyautogui.press('left')
 
 ## keyDown('...')
 
-**Shift** tuşuna basılı tut.
+**Shift** tuşuna basılı tut. Bırak komutu gelinceye kadar basmaya devam et. Büyük harf ya da üst karakterleri yazdırmak istediğimizde kullanabiliriz.
 
 ```python
 pyautogui.keyDown('shift')
@@ -307,11 +367,33 @@ pyautogui.keyDown('shift')
 
 ## keyUp('...')
 
-**Shift **tuşuna basmayı bırak.
+**Shift** tuşuna basmayı bırak.
 
 ```python
 pyautogui.keyUp('shift')
 ```
+
+keyDown() ve keyUp() metotları ile basit bir örnek yapalım;
+
+```python
+pyautogui.keyDown("shift")
+pyautogui.typewrite("8")
+pyautogui.keyUp("shift")
+pyautogui.typewrite("150")
+pyautogui.keyDown("shift")
+pyautogui.typewrite("7")
+pyautogui.keyUp("shift")
+pyautogui.typewrite("3")
+pyautogui.keyDown("shift")
+pyautogui.typewrite("9")
+pyautogui.keyUp("shift")
+```
+
+> Çıktı;
+> 
+> ```python
+> (150/3)
+> ```
 
 ## hotkey('...', '...')
 
@@ -327,25 +409,50 @@ Shift+Home kısayol tuşlarına bas.
 pyautogui.hotkey('shift', 'home')
 ```
 
-# MESAJ KUTUSU İŞLEVLERİ;
+Bu metodu, iş hayatında en sık kullandığımız komutlardan olan Kopyala - Yapıştır tuşları için kullanabiliriz.
+
+```python
+pyautogui.hotkey('ctrl', 'c')
+pyautogui.hotkey('ctrl', 'v')
+```
+
+# Mesaj Kutusu Fonksiyonları;
 
 ## alert()
 
-**Metin, başlık ve tek bir buton**dan oluşan bir ileti kutusu gösterir. Butona tıklandıktan sonra buton (button) metnini döndürür.
+Bu metot, **Metin, başlık ve tek bir buton**dan oluşan bir ileti/mesaj kutusu gösterir. Butona tıklandıktan sonra buton (button) metnini döndürür.
 
 ```python
-print(pyautogui.alert(text='Buraya metin', title='Başlık', button='OK'))
+print(pyautogui.alert(text='Buraya metin', title='Başlık', button='Tamam len!'))
 ```
 
-Belirtilen butonlar, metin ve başlıktan oluşan metin kutusu. Butonlar birden fazla olabilir. Butonlara tıklandığında sonuç olarak tıklanan butonun (buttons) metnini gönderir.
+> Çıktı;
+> 
+> ```python
+> Tamam len!
+> ```
+
+
+
+## confirm()
+
+Liste halinde belirtilen butonları, metni ve başlığı gösteren bir metin kutusu oluşturur. (Liste halinde yazılmak kaydıyla) butonlar birden fazla olabilir. Butonlara tıklandığında sonuç olarak tıklanan butonun (buttons) metnini gönderir.
 
 ```python
-print(pyautogui.confirm(text='Buraya metin', title='Başlık', buttons=['OK', 'Cancel']))
+print(pyautogui.confirm(text='Seveceksen ?', title='Doğru de', buttons=['He Vallah', 'Olmaz']))
 ```
+
+> **He Vallah** yazan butona bastığımızda döndürülen sonuç / çıktı;
+> 
+> ```python
+> He Vallah
+> ```
+
+
 
 ## prompt()
 
-“**Ok**” ve “**Cancel**” butonlarının bulunduğu metin kutusu. “**Ok**” butonuna tıklandığında sonuç olarak **girilen metni**, “**Cancel**” butonuna tıklandığında **None** değerini döndürür.
+Metin girebileceğimiz / yazabileceğimiz bir Metin alanı (Text Area), “**Ok**” ve “**Cancel**” butonlarının bulunduğu bir metin kutusu görüntülenir. “**Ok**” butonuna tıklandığında sonuç olarak **girilen metni**, “**Cancel**” butonuna tıklandığında **None** değerini döndürür.
 
 ```python
 print(pyautogui.prompt(text='Metninizi yazın...', title='Başlık'))
@@ -353,7 +460,7 @@ print(pyautogui.prompt(text='Metninizi yazın...', title='Başlık'))
 
 ## password()
 
-“**Ok**” ve “**Cancel**” butonlarının bulunduğu metin kutusu. **prompt()** fonksiyonundan tek farkı yazılan metinler “*****” olarak görüntülenir. “**Ok**” butonuna tıklanır ise metni, “**Cancel**” butonuna tıklanır ise None değerini **sonuç** olarak döndürür.
+Metin girebileceğimiz / yazabileceğimiz bir Metin alanı (Text Area), “**Ok**” ve “**Cancel**” butonlarının bulunduğu bir metin kutusu görüntülenir. Bu fonksiyonun **prompt()** fonksiyonundan tek farkı, yazılan metinler `*` şeklinde görüntülenir. “**Ok**” butonuna tıklanır ise **yazılan metin**, “**Cancel**” butonuna tıklanır ise **None** değerini **sonuç** olarak döndürür.
 
 ```python
 print(pyautogui.password(text='Burası metin', title='Başlık', mask='*'))
@@ -375,4 +482,30 @@ Ekranının sadece **belirli bir kısmının** görüntüsünü almak isteyince 
 
 ```python
 resim = pyautogui.screenshot("goruntu.png", region=(20, 50, 100, 500))
+```
+
+
+
+## locateCenterOnScreen()
+
+Bu metot ile, bilgisayarınızda kayıtlı bir resmin, ekranda olup olmadığını denetler, varsa koordinatlarını döndürür.
+
+Resimler klasöründe bulunan **Like.png** isimli resim ekranda varsa koordinatlarını tespit et, x ve y değişkenlerine ata. Ardından imleci belirlenen (x, y) konuma 1 saniyede taşı ve bir kez sol tıkla.
+
+```python
+x,y = pyautogui.locateCenterOnScreen("/home/halil/Resimler/Like.png")
+print(x, y)
+(650, 325)
+pyautogui.moveTo(x, y, duration=1)
+pyautogui.click()
+```
+
+Resmin bulunmasını hızlandırmak için aramayı siyah beyaz resim üzerinde yapmak için **grayscale=True** parametresi kullanabiliriz.
+
+```python
+x,y = pyautogui.locateCenterOnScreen("/home/halil/Resimler/Like.png", grayscale=True)
+print(x, y)
+(650, 325)
+pyautogui.moveTo(x, y, duration=1)
+pyautogui.click()
 ```
