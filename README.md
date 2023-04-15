@@ -25,7 +25,7 @@ print(pyautogui.size())
 > Size(width=1920, height=1080)
 > ```
 
-## ## onScreen(x, y)
+## onScreen(x, y)
 
 Belirttiğimiz (0, 3000) Koordinatları, ekran sınırları içerisinde mi? Öğrenelim.
 
