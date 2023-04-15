@@ -1,6 +1,7 @@
 **PyAutoGUI**, fare ve klavyeleri kontrol etmemizi sağlayan, böylece otomatik görevler yapan kodlar/botlar yazmamıza yardımcı olan güzel, faydalı bir Python kütüphanesidir/modülüdür.
 
 **PyAutoGUI** kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;
+
 * İmleci hareket ettirme,
 * İstenilen yere tek, çift ya da daha fazla tıklama,
 * Pencere, diyalog kutusu, kaydırma çubuğu,...vb  hareket ettirme,
@@ -148,7 +149,7 @@ pyautogui.click(x=100, y=200)
 
 ## click(button='right')
 
-Bulunduğu konumda ****farenin sağ butonu** ile tıklar.
+Bulunduğu konumda ****farenin sağ butonu** ile tıklar. Bunun için **rightClick(x, y)** komutu da kullanılabilir. Bu komut aşağıda anlatıldı.
 
 ```python
 pyautogui.click(button='right') 
@@ -156,7 +157,7 @@ pyautogui.click(button='right')
 
 ## click(clicks=...)
 
-**Farenin sol butonu** ile çift (iki kez) tıklar.
+**Farenin sol butonu** ile çift (iki kez) tıklar. Bunun için **doubleClick(x, y)** komutu da kullanılabilir. Bu komut aşağıda anlatıldı.
 
 ```python
 pyautogui.click(clicks=2)
