@@ -3,7 +3,7 @@
 **PyAutoGUI** kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;
 * İmleci hareket ettirme,
 * İstenilen yere tek, çift ya da daha fazla tıklama,
-* Pencere ya da diyalog kutusu Kaydırma,
+* Pencere, diyalog kutusu, kaydırma çubuğu,...vb  hareket ettirme,
 * Klavyeden yazı yazma,
 * Komut gönderme,
 * Ekran görüntüsü alma,
