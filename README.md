@@ -10,7 +10,7 @@
 * Ekran görüntüsü alma,
 * Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.
 
-**PyAutoGUI** kütüphanesini indirme/yükleme konusunda [bu adresten]([PyAutoGUI · PyPI](https://pypi.org/project/PyAutoGUI/)) ya da [şu adresten]([GitHub - asweigart/pyautogui: A cross-platform GUI automation Python module for human beings. Used to programmatically control the mouse &amp; keyboard.](https://github.com/asweigart/pyautogui)) bilgi alabilirsiniz.
+**PyAutoGUI** kütüphanesini indirme/yükleme konusunda [bu adresten](https://pypi.org/project/PyAutoGUI/) ya da [şu adresten](https://github.com/asweigart/pyautogui) bilgi alabilirsiniz.
 
 ## Pip Yüklemek;
 
@@ -585,3 +585,13 @@ print(x, y)
 pyautogui.moveTo(x, y, duration=1)
 pyautogui.click()
 ```
+
+
+
+### Kaynaklar;
+
+[Python PyAutoGui Modülü Kullanımı | Sinan Erdinç](https://www.sinanerdinc.com/python-pyautogui-modulu-kullanimi)
+
+[Python ile Klavye ve Fare Kontrolü (pyautogui) - İbrahim İrdem](https://medium.com/@ibrahimirdem/python-ile-klavye-ve-fare-kontrol%C3%BC-pyautogui-6da4eb31b269)
+
+[Robotik Süreç Otomasyonunda PyAutoGUI Kütüphanesi - Kronnika RPA](https://kronnika.com/tr/robotik-surec-otomasyonunda-pyautogui-kutuphanesi/)
