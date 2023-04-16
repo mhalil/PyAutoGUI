@@ -10,7 +10,40 @@
 * Ekran görüntüsü alma,
 * Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.
 
-Bu repoda **PyAutoGUI** kütüphanesinin Temel Komutları anlatılmıştır. Kütüphane daha geniş komut ve kullanım seçeneklerine sahiptir.
+**PyAutoGUI** kütüphanesini indirme/yükleme konusunda [bu adresten]([PyAutoGUI · PyPI](https://pypi.org/project/PyAutoGUI/)) ya da [şu adresten]([GitHub - asweigart/pyautogui: A cross-platform GUI automation Python module for human beings. Used to programmatically control the mouse &amp; keyboard.](https://github.com/asweigart/pyautogui)) bilgi alabilirsiniz.
+
+## Pip Yüklemek;
+
+**Pip**, python kütüphanelerini barındıran bir paket yönetim sistemidir. Paket
+ yönetim sistemi ise, geliştiriciler tarafından hazırlanan o dile ya da yazılıma ait kütüphaneleri / modülleri tek komut kullanarak kolayca yükleyebilmenizi, güncelleyebilmenizi ve isterseniz silebilmenizi sağlayan araçtır.
+
+Eğer bilgisayarınızda **pip** yüklü değilse öncelikle **pip3**'ü yüklemelisiniz. 
+
+```python
+sudo apt-get install python3-pip
+```
+
+## PyAutoGUI kütüphanesini yüklemek;
+
+### Windows Kullanıcısı;
+
+Windows kullanıyorsanız PyAutoGUI kütüphanesini yüklemek aşağıdaki komutu, komut satırına yazmalısınız.
+
+```python
+C:\Python34\pip.exe install pyautogui
+```
+
+### Linux Kullanıcısı;
+
+Linux  kullanıyorsanız PyAutoGUI kütüphanesini yüklemek aşağıdaki komutu, terminale  yazmalısınız.
+
+```python
+pip3 install python3-xlib
+sudo apt-get install scrot
+sudo apt-get install python3-tk
+sudo apt-get install python3-dev
+pip3 install pyautogui
+```
 
 # Genel Fonksiyonlar;
 
@@ -47,6 +80,18 @@ print(pyautogui.onScreen(0, 3000))
 > ```python
 > False
 > ```
+
+## UYARI:
+
+PyAutoGUI kütüphanesini kullanırken, koordinatlar hakkında bilmeniz gereken bir husus var. Fare kontrolü yapabilmemiz için ekrandaki koordinat sistemini anlayabilmemiz gerekir.
+
+Bu koordinat sistemi X (yatay) ve Y (dikey) düzlemlerden oluşmaktadır.
+
+Sol üst (x,y) koordinatı (0,0) olarak başlangıç olup, Y sağa doğru artış gösterirken, Y aşağı doğru artış gösterir.
+
+Ekran boyut sınırları her bilgisayarda farklılık gösterebilir.
+
+![koordinat](img/koordinat.png)
 
 # Fare Hareketine Dair Fonksiyonlar;
 
@@ -186,7 +231,7 @@ pyautogui.click(button='right')
 
 ## click(clicks=...)
 
-**Farenin sol butonu** ile çift (iki kez) tıklar. Bunun için **doubleClick(x, y)** komutu da kullanılabilir. Bu komut aşağıda anlatıldı.
+**Farenin sol butonu** ile birden fazla tıklar. Çift (iki kez) tıklamak için **doubleClick(x, y)** metodu da kullanılabilir. **doubleClick()** metodu aşağıda anlatıldı.
 
 ```python
 pyautogui.click(clicks=2)
@@ -205,6 +250,23 @@ pyautogui.click(clicks=2, interval=0.25)
 ```python
 pyautogui.click(button="right", clicks=3, interval=0.25)
 ```
+
+## click("resim.png")
+
+**click()** metodunun bir başka kullanım yöntemi de, bir görseli referans olarak belirterek, o görselin koordinatlarını otomatik olarak belirleyip o koordinata tıklamasıdır. Bunu aşağıdaki kod ile basit bir şekilde gerçekleştirebiliriz.
+
+```python
+click("begen.png")
+```
+
+Referans resme sağ tıklamak için;
+
+```python
+pyautogui.click("link.png", button="right")
+```
+
+**PyAutoGUI** kütüphanesini referans resimler/grafikler ile kullanırken dikkat etmemiz gerekir. Kodları yazdığımız bilgisayar ile kodu/uygulamayı kullanacağımız bilgisayarın  ekran çözünürlüklerinin farklı olması halinde, referans resimlere ait görselleri uygulamayı kullanacağımız bilgisayarda yeniden almamız gerekir. Zira referans görüntülerdeki ufak değişiklikler bile kütüphane için olumsuz sonuçlar verecektir. 
+Ayrıca ekranda referans görüntünün bir benzerinin olmaması gerekir. Aksi taktirde yanlış koordinat elde edilir ve istediğimizden farklı bir koordinata tıklanarak yanlış sonuç elde edebiliriz.
 
 ## rightClick(x, y)
 
@@ -423,32 +485,32 @@ pyautogui.hotkey('ctrl', 'v')
 Bu metot, **Metin, başlık ve tek bir buton**dan oluşan bir ileti/mesaj kutusu gösterir. Butona tıklandıktan sonra buton (button) metnini döndürür.
 
 ```python
-print(pyautogui.alert(text='Buraya metin', title='Başlık', button='Tamam len!'))
+print(pyautogui.alert(text='Uyarı metnini buraya yazıyoruz', title='Başlığımız', button='Tamam len!'))
 ```
 
 > Çıktı;
 > 
 > ```python
-> Tamam len!
+> > Tamam len!
 > ```
 
-
+![alert](img/alert.png)
 
 ## confirm()
 
 Liste halinde belirtilen butonları, metni ve başlığı gösteren bir metin kutusu oluşturur. (Liste halinde yazılmak kaydıyla) butonlar birden fazla olabilir. Butonlara tıklandığında sonuç olarak tıklanan butonun (buttons) metnini gönderir.
 
 ```python
-print(pyautogui.confirm(text='Seveceksen ?', title='Doğru de', buttons=['He Vallah', 'Olmaz']))
+print(pyautogui.confirm(text='Doğruluyor musun?', title='Emin misiniz?', buttons=['Doğruluyorum', 'Doğrulamıyorum']))
 ```
 
-> **He Vallah** yazan butona bastığımızda döndürülen sonuç / çıktı;
+> **Doğruluyorum*** yazan butona bastığımızda döndürülen sonuç / çıktı;
 > 
 > ```python
-> He Vallah
+> Doğruluyorum
 > ```
 
-
+![confirm](img/confirm.png)
 
 ## prompt()
 
@@ -458,13 +520,29 @@ Metin girebileceğimiz / yazabileceğimiz bir Metin alanı (Text Area), “**Ok*
 print(pyautogui.prompt(text='Metninizi yazın...', title='Başlık'))
 ```
 
+![prompt](img/prompt.png)
+
+> **OK** butonuna basıldığında elde edilen çıktı;
+> 
+> ```python
+> PyAutoGUI - Python
+> ```
+
 ## password()
 
 Metin girebileceğimiz / yazabileceğimiz bir Metin alanı (Text Area), “**Ok**” ve “**Cancel**” butonlarının bulunduğu bir metin kutusu görüntülenir. Bu fonksiyonun **prompt()** fonksiyonundan tek farkı, yazılan metinler `*` şeklinde görüntülenir. “**Ok**” butonuna tıklanır ise **yazılan metin**, “**Cancel**” butonuna tıklanır ise **None** değerini **sonuç** olarak döndürür.
 
 ```python
-print(pyautogui.password(text='Burası metin', title='Başlık', mask='*'))
+print(pyautogui.password(text='Şifrenizi Giriniz:', title='Giriş Ekranı', mask='*'))
 ```
+
+![password](img/password.png)
+
+> OK butonuna basılınca elde edilen çıktı;
+> 
+> ```
+> deneme
+> ```
 
 # EKRAN GÖRÜNTÜ İŞLEVLERİ;
 
@@ -483,8 +561,6 @@ Ekranının sadece **belirli bir kısmının** görüntüsünü almak isteyince 
 ```python
 resim = pyautogui.screenshot("goruntu.png", region=(20, 50, 100, 500))
 ```
-
-
 
 ## locateCenterOnScreen()
 
