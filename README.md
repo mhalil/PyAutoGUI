@@ -488,7 +488,7 @@ resim = pyautogui.screenshot("goruntu.png", region=(20, 50, 100, 500))
 
 ## locateCenterOnScreen()
 
-Bu metot ile, bilgisayarınızda kayıtlı bir resmin, ekranda olup olmadığını denetler, varsa koordinatlarını döndürür.
+Bu metot ile, bilgisayarınızda kayıtlı bir resmin, ekranda olup olmadığını denetler, varsa koordinatlarını döndürür. İlgili görsel birden fazla varsa tümüne ait koordinatları döndürür.
 
 Resimler klasöründe bulunan **Like.png** isimli resim ekranda varsa koordinatlarını tespit et, x ve y değişkenlerine ata. Ardından imleci belirlenen (x, y) konuma 1 saniyede taşı ve bir kez sol tıkla.
 
