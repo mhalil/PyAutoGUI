@@ -4,8 +4,8 @@
 
 * İmleci hareket ettirme,
 * İstenilen yere tek, çift ya da daha fazla tıklama,
-* Pencere, diyalog kutusu, kaydırma çubuğu,...vb  hareket ettirme,
-* Klavyeden yazı yazma,
+* Pencere, diyalog kutusu taşıma, kaydırma çubuğunu  hareket ettirme,
+* Klavyeden yazı yazma, Ekrandaki metnin bir bölümü ya da tamamını seçme,
 * Komut gönderme,
 * Ekran görüntüsü alma,
 * Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.
@@ -27,7 +27,7 @@ sudo apt-get install python3-pip
 
 ### Windows Kullanıcısı;
 
-Windows kullanıyorsanız PyAutoGUI kütüphanesini yüklemek aşağıdaki komutu, komut satırına yazmalısınız.
+Windows işletim sistemi kullanıyorsanız PyAutoGUI kütüphanesini yüklemek için aşağıdaki komutu, komut satırına yazmalısınız.
 
 ```python
 C:\Python34\pip.exe install pyautogui
@@ -35,7 +35,7 @@ C:\Python34\pip.exe install pyautogui
 
 ### Linux Kullanıcısı;
 
-Linux  kullanıyorsanız PyAutoGUI kütüphanesini yüklemek aşağıdaki komutu, terminale  yazmalısınız.
+Linux işletim sistemi kullanıyorsanız PyAutoGUI kütüphanesini yüklemek için aşağıdaki komutu, terminale  yazmalısınız.
 
 ```python
 pip3 install python3-xlib
@@ -47,7 +47,7 @@ pip3 install pyautogui
 
 # Genel Fonksiyonlar;
 
-Öncelikle **pyautogui** modülünü, çalışmamıza import edelim.
+Öncelikle **pyautogui** modülünü, çalışmamıza dahil (import) edelim.
 
 ```python
 import pyautogui
@@ -85,15 +85,13 @@ print(pyautogui.onScreen(0, 3000))
 
 PyAutoGUI kütüphanesini kullanırken, koordinatlar hakkında bilmeniz gereken bir husus var. Fare kontrolü yapabilmemiz için ekrandaki koordinat sistemini anlayabilmemiz gerekir.
 
-Bu koordinat sistemi X (yatay) ve Y (dikey) düzlemlerden oluşmaktadır.
+Bu koordinat sistemi `X` (yatay) ve `Y` (dikey) düzlemlerden oluşmaktadır.
 
-Sol üst (x,y) koordinatı (0,0) olarak başlangıç olup, Y sağa doğru artış gösterirken, Y aşağı doğru artış gösterir.
-
-Ekran boyut sınırları her bilgisayarda farklılık gösterebilir.
+Başlangıç Koordinatı olan (0, 0) noktası (Orijin), Ekranın sol üst kısmıdır. `X` ekseni sağa doğru artarken, `Y` ekseni aşağı yönde artış gösterir.
 
 ![koordinat](img/koordinat.png)
 
-# Fare Hareketine Dair Fonksiyonlar;
+# Fare Hareketi Fonksiyonları;
 
 ## position()
 
@@ -544,7 +542,7 @@ print(pyautogui.password(text='Şifrenizi Giriniz:', title='Giriş Ekranı', mas
 > deneme
 > ```
 
-# EKRAN GÖRÜNTÜ İŞLEVLERİ;
+# Ekran Görüntüsü Fonksiyonları;
 
 ## screenshot('...')
 
@@ -585,8 +583,6 @@ print(x, y)
 pyautogui.moveTo(x, y, duration=1)
 pyautogui.click()
 ```
-
-
 
 ### Kaynaklar;
 
