@@ -10,7 +10,7 @@
 * Ekran görüntüsü alma,
 * Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.
 
-**PyAutoGUI** kütüphanesini indirme/yükleme konusunda [bu adresten]([PyAutoGUI · PyPI](https://pypi.org/project/PyAutoGUI/)) ya da [şu adresten]([GitHub - asweigart/pyautogui: A cross-platform GUI automation Python module for human beings. Used to programmatically control the mouse &amp; keyboard.](https://github.com/asweigart/pyautogui)) bilgi alabilirsiniz.
+**PyAutoGUI** kütüphanesini indirme/yükleme konusunda [bu adresten](https://pypi.org/project/PyAutoGUI/) ya da [şu adresten](https://github.com/asweigart/pyautogui) bilgi alabilirsiniz.
 
 ## Pip Yüklemek;
 
